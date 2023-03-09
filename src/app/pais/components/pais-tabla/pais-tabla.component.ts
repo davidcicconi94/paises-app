@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pais } from '../../interfaces/pais.interface';
 
 @Component({
@@ -9,4 +10,6 @@ import { Pais } from '../../interfaces/pais.interface';
 export class PaisTablaComponent {
   @Input()
   paises: Pais[] = [];
+
+  constructor(private router: Router) {}
 }

@@ -1,1 +1,77 @@
-<p>detalles-pais works!</p>
+<div *ngIf="!pais; else country" class="alert alert-info mt-5">Loading...</div>
+
+<ng-template #country>
+  <div class="card mt-5 bg-secondary animate__animated animate__fadeIn">
+    <img
+      class="card-img-top"
+      [src]="pais.flags.png"
+      [alt]="pais.cca2"
+      height="500px"
+    />
+    <div class="card-header bg-dark text-white">
+      <h2 class="card-title text-center" style="letter-spacing: 5px">
+        {{ pais.name.common }}
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-text p-2">Region: {{ pais.region }}</h5>
+              <h5 class="card-text p-2">Subregion: {{ pais.subregion }}</h5>
+              <h5 class="card-text p-2">
+                Population: {{ pais.population | number }}
+              </h5>
+              <h5 class="card-text p-2">Status: {{ pais.status }}</h5>
+              <h5 class="card-text p-2">
+                Independent: {{ pais.independent ? "Yes" : "No" }}
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="col p-2">
+                <h5 class="card-text p-2">Translations:</h5>
+                <span class="badge bg-secondary p-2 m-2">{{
+                  pais.translations["deu"].common
+                }}</span>
+                <span class="badge bg-secondary p-2">{{
+                  pais.translations["spa"].common
+                }}</span>
+                <span class="badge bg-secondary p-2 m-2">{{
+                  pais.translations["fra"].common
+                }}</span>
+                <span class="badge bg-secondary p-2 m-2">{{
+                  pais.translations["kor"].common
+                }}</span>
+                <span class="badge bg-secondary p-2 m-2">{{
+                  pais.translations["ita"].common
+                }}</span>
+                <span class="badge bg-secondary p-2 m-2">{{
+                  pais.translations["por"].common
+                }}</span>
+                <span class="badge bg-secondary m-2 p-2">{{
+                  pais.translations["pt"]
+                }}</span>
+                <span class="badge bg-secondary m-2 p-2">{{
+                  pais.translations["srp"].common
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-5 m-auto text-center">
+    <button
+      (click)="back()"
+      class="btn btn-outline-danger animate__animated animate__fadeIn w-100"
+    >
+      BACK
+    </button>
+  </div>
+</ng-template>

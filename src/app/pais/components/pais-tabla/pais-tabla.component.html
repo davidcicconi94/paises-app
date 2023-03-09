@@ -1,11 +1,16 @@
-<table *ngIf="paises.length > 0" class="table table-hover">
+<table
+  *ngIf="paises.length > 0; else noTable"
+  class="table table-hover animate__animated animate__fadeIn"
+>
   <thead>
     <tr>
       <th>#</th>
-      <th>Bandera</th>
-      <th>Nombre</th>
-      <th>Población</th>
-      <th>Something</th>
+      <th>Flag</th>
+      <th>Country</th>
+      <th>Capital</th>
+      <th>Region</th>
+      <th>People</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -14,12 +19,23 @@
       <td>{{ i + 1 }}</td>
       <td>{{ pais.flag }}</td>
       <td>{{ pais.name.common }}</td>
+      <td *ngIf="pais.capital; else noCapital">{{ pais.capital }}</td>
+      <ng-template #noCapital>
+        <td>-</td>
+      </ng-template>
+      <td>{{ pais.subregion }}</td>
       <td>{{ pais.population | number }}</td>
       <td>
-        <a [routerLink]="['/pais']" routerLinkActive="router-link-active"
-          >Ver detalles...</a
+        <a
+          [routerLink]="['/pais', pais.name.common.toLowerCase()]"
+          routerLinkActive="router-link-active"
+          >See more...</a
         >
       </td>
     </tr>
   </tbody>
 </table>
+
+<ng-template #noTable>
+  <app-no-results></app-no-results>
+</ng-template>
