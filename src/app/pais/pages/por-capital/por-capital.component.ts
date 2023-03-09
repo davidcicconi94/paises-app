@@ -18,6 +18,7 @@ export class PorCapitalComponent {
   constructor(private paisService: PaisService) {}
 
   buscar(capital: string) {
+    this.isError = false;
     this.resultado = capital;
 
     this.paisService.buscarCapital(capital).subscribe(

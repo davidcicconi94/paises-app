@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+}
+
+body {
+    background-color: rgb(255, 242, 225);
+    height: 100vh;
+    margin-bottom: 20px;
+}
+
+
+footer {
+    bottom: 0;
+    top: 10px;
+    width: 100%;
+}
+
+@media (min-width: 268px) { 
+
+    * {
+        font-size: 15px
+    }
+ }
+
+@media (min-width: 992px) { 
+    * {
+        font-size: 20px
+    }
+
+ }
+
+
+ @media (min-width: 1200px) { 
+    * {
+        font-size: 24px
+    }
+    
+ }
