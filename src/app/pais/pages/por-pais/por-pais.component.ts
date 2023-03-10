@@ -10,7 +10,11 @@ import { PaisService } from '../../services/pais.service';
 export class PorPaisComponent {
   resultado: string = '';
   isError: boolean = false;
+
   paises: Pais[] = [];
+  sugerenciasPaises: Pais[] = [];
+
+  mostrarSug: boolean = false;
 
   constructor(private paisService: PaisService) {}
 
@@ -33,5 +37,19 @@ export class PorPaisComponent {
 
   sugerencias(resultado: string) {
     this.isError = false;
+    this.resultado = resultado;
+    this.mostrarSug = true;
+
+    this.paisService.buscarCapital(resultado).subscribe((paises: any) => {
+      this.sugerenciasPaises = paises.splice(0, 5);
+    }),
+      (err: any) => {
+        this.sugerenciasPaises = [];
+      };
+  }
+
+  buscarSugerido(resultado: string) {
+    this.buscar(resultado);
+    this.mostrarSug = false;
   }
 }
