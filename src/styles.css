@@ -10,35 +10,10 @@
 
 body {
     background-color: rgb(255, 242, 225);
-    height: 100vh;
-    margin-bottom: 20px;
 }
 
 
-footer {
-    bottom: 0;
-    top: 10px;
-    width: 100%;
-}
-
-@media (min-width: 268px) { 
-
-    * {
-        font-size: 15px
-    }
- }
-
-@media (min-width: 992px) { 
-    * {
-        font-size: 20px
-    }
-
- }
 
 
- @media (min-width: 1200px) { 
-    * {
-        font-size: 24px
-    }
+
     
- }
