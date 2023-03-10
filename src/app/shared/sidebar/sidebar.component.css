@@ -12,3 +12,11 @@ li.active {
     background-color: rgb(17, 17, 17);
 }
 
+
+@media (max-width: 767.98px) { 
+    * {
+        font-size: 17px;
+    }
+
+  }
+

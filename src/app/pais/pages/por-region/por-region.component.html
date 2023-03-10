@@ -6,14 +6,26 @@
     <app-pais-input
       [placeholder]="placeholder"
       (onEnter)="buscar($event)"
+      (onDebounce)="sugerencias($event)"
     ></app-pais-input>
   </div>
 </div>
 
+<ul *ngIf="mostrarSug && resultado.length > 0" class="list-group">
+  <li
+    *ngFor="let pais of sugerenciasRegion"
+    class="list-group-item list-group-item-action"
+    (click)="buscarSugerido(resultado)"
+    routerLinkActive="router-link-active"
+  >
+    {{ pais.region }}
+  </li>
+</ul>
+
 <hr />
 
 <div *ngIf="isError" class="alert alert-danger">
-  No se encontró nada con el término: "{{ resultado }}"
+  We could not find the result: "{{ resultado }}"
 </div>
 
 <div class="row">

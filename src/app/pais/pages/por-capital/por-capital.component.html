@@ -3,14 +3,31 @@
 
 <div class="row">
   <div class="col">
-    <app-pais-input [placeholder]="placeholder" (onEnter)="buscar($event)"></app-pais-input>
+    <app-pais-input [placeholder]="placeholder" (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)" ></app-pais-input>
   </div>
 </div>
+
+<ul *ngIf="mostrarSug && resultado.length > 0" class="list-group">
+  <li
+    *ngFor="let pais of sugerenciasCapital"
+    class="list-group-item list-group-item-action"
+    [routerLink]="['/pais', pais.name.common.toLowerCase()]"
+    routerLinkActive="router-link-active"
+  >
+    {{ pais.capital[0] }}
+  </li>
+  <li
+    class="list-group-item list-group-item-action bg-success text-white"
+    (click)="buscarSugerido(resultado)"
+  >
+    <a class="nav-link">Buscar: " {{ resultado }} " </a>
+  </li>
+</ul>
 
 <hr />
 
 <div *ngIf="isError" class="alert alert-danger">
-  No se encontró nada con el término: "{{ resultado }}" 
+  We could not find the result: "{{ resultado }}" 
 </div>
 
 <div class="row">
